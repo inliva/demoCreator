@@ -1,5 +1,6 @@
 <?php
 
+
 $menu = '';
 $i = 0;
 $dizin = opendir('resim');
@@ -8,7 +9,8 @@ $dizin = opendir('resim');
 		//$indexno = explode('.', $dosya);
 		if($dosya != '.' && $dosya != '..' && $dosya != '.DS_Store'){
 			$indexno = $i == 0 ? '' : $i;
-		   	$menu .= "<div class='thumb'><a href='index{$indexno}.html'><img src='resim/{$dosya}' width='60' height='60' /></a></div>";
+			$sayfano = $i+1;
+		   	$menu .= "<div class='thumb'><a href='index{$indexno}.html'><div class='siyah'><span>{$sayfano}</span></div></a></div>";
 		   	$i++;
 	   }
 	}
@@ -28,11 +30,14 @@ $dizin = opendir('resim');
 			<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 				<title>demo</title>
 			<style type='text/css'>
-				body		{margin:0; padding:0;  background:url(resim/{$dosya}) no-repeat; !important; background-size:1920px; background-position:top center; height:1420px;}
+				body		{margin:0; padding:0;  background:url({$dosya}) no-repeat; !important; background-size:1920px; background-position:top center; height:1420px;}
 				#wrap		{position:absolute; top:30px; right:10px; width:60px;}
 				.thumb		{width:60px; height:60px; float:left; margin:5px 0 0 0; float:left;}
 				.thumb img	{width:60px;height:60px;  margin:5px 0 0 0;}
+				.siyah {background-color:#000;width:60px;height:60px}
+				.siyah span {color:#fff;font-size:41px;margin-left:9px;margin-top:7px;position:absolute}
 				img {border: none} 
+				a {text-decoration:none}
 			</style>
 			</head>
 			<body>
@@ -47,7 +52,7 @@ $dizin = opendir('resim');
       
 		 $i++;
 
-		 $olustur = fopen('index'.$indexno.'.html', 'w');
+		 $olustur = fopen('resim/index'.$indexno.'.html', 'w');
 
 		fwrite($olustur, $sablon);
 		fclose($olustur);
@@ -55,58 +60,25 @@ $dizin = opendir('resim');
 
 	}
 
+$rootPath = realpath('/Applications/MAMP/htdocs/demoCreator/resim');
 
-	   	$zipAdi = "indir.zip";
-		$resimDosyasi = "resim";
+$zip = new ZipArchive();
+$zip->open('indir.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
-		$zip = new ZipArchive; 
-		if ($zip -> open($zipAdi, ZipArchive::CREATE) === TRUE) 
-		{ 
-		    $dir = preg_replace('/[\/]{2,}/', '/', $resimDosyasi."/"); 
-		    
-		    $dirs = array($dir); 
-		    while (count($dirs)) 
-		    { 
-		        $dir = current($dirs); 
-		        $zip -> addEmptyDir($dir); 
-		        
-		        $dh = opendir($dir); 
-		        while($dosya = readdir($dh)) 
-		        { 
-		        	
-		            if ($dosya != '.' && $dosya != '..' && $dosya != '.DS_Store') 
-		            { 
-		            	echo "erdi";
-		                if (is_file($dosya)) 
-		                    $zip -> addFile($dir.$dosya, $dir.$dosya); 
-		                elseif (is_dir($dosya)) 
-		                    $dirs[] = $dir.$dosya."/"; 
-		            } 
-		        } 
-		        closedir($dh); 
-		        array_shift($dirs); 
-		    } 
+$files = new RecursiveIteratorIterator(
+    new RecursiveDirectoryIterator($rootPath),
+    RecursiveIteratorIterator::LEAVES_ONLY
+);
 
+foreach ($files as $name => $file)
+{
+    if (!$file->isDir())
+    {
+        $filePath = $file->getRealPath();
+        $relativePath = substr($filePath, strlen($rootPath) + 1);
 
-		    
-		    $zip -> close(); 
-		    echo 'zip başarıyla oluşturuldu!'; 
-		} 
-		else 
-		{ 
-		    echo 'zip dosyası oluşturulurken hata oluştu'; 
-		} 
+        $zip->addFile($filePath, $relativePath);
+    }
+}
+$zip->close();
 
-
-  //       $resimAdi = $_FILES['file']['name'];
-  //       $uzanti = explode('.', $resimAdi);
-
-  //       $olustur = fopen('tmp/'.$uzanti[0].'.html', 'w');
-
-
-  //       $menuSablon = "<div class='thumb'><a href='$uzanti[0].'.html'.'><img src='resim/$resimAdi' width='60' height='60' /></a></div>";
-
-        
-
-		// fwrite($olustur, $sablon);
-		// fclose($olustur);
