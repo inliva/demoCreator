@@ -13,9 +13,7 @@
 	
 </head>
 <body>
-	
-
-	
+<?php require_once('sil.php'); ?>
 <div class="bdr_upload">
 <h1 class="text-danger center">Demo Oluşturucu</h1>
   <form action="upload.php" id="dropzone" class="dropzone">
