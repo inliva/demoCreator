@@ -60,7 +60,7 @@ $dizin = opendir('resim');
 
 	}
 
-$rootPath = realpath(__DIR__);
+$rootPath = realpath(__DIR__ . '/resim');
 
 $zip = new ZipArchive();
 $zip->open('indir.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
