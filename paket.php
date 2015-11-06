@@ -60,7 +60,7 @@ $dizin = opendir('resim');
 
 	}
 
-$rootPath = realpath('/Applications/MAMP/htdocs/demoCreator/resim');
+$rootPath = realpath(__DIR__);
 
 $zip = new ZipArchive();
 $zip->open('indir.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
