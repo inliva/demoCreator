@@ -19,7 +19,6 @@
 
     </form>
 </div>
-
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -37,7 +36,6 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
 <div class="footer">
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/dropzone.js"></script>
