@@ -30,8 +30,8 @@
                 <p>Dosyalarınız .zip haline cevrilmiştir. Butona tıklayıp indirin.</p>
             </div>
             <div class="modal-footer">
-                <a href="/index.php" class="btn btn-default">Vazgeç</a>
-                <a href="/bitti.php" class="btn btn-success" id="download" target="_blank">Dosyaları İndir</a>
+                <a href="index.php" class="btn btn-default">Vazgeç</a>
+                <a href="bitti.php" class="btn btn-success" id="download" target="_blank">Dosyaları İndir</a>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
