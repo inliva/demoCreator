@@ -25,7 +25,6 @@ function klasorSil($dir) {
 if (file_exists('indir.zip')) {
     unlink('indir.zip');
 }
-;
 
 if (is_dir('resim')) {
     klasorSil('resim');
