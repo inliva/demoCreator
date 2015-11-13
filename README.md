@@ -1,2 +1,8 @@
 # demoCreator
-Web site grafik tasarımlarının html sunumunu oluşturur.
+Create HTML presentation
+
+# Supported Image Formats
+jpg, png
+
+# Development Status
+Not tested
