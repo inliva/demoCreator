@@ -51,7 +51,7 @@ while ($file_name = readdir($dir)) {
             "</div>";
         $i++;
     }
-    rename(realpath('resim') . '/' . $file_name, realpath('resim/images') . '/' . $file_name);
+    rename(__DIR__ . '/resim/' . $file_name, __DIR__ . '/resim/images/' . $file_name);
 }
 closedir($dir);
 # END -- Build Menu
@@ -90,7 +90,7 @@ fclose($css_file);
 # END -- Create CSS File
 
 # START -- Create ZIP File
-$rootPath = realpath(__DIR__ . '/resim');
+$rootPath = __DIR__ . '/resim';
 
 $zip = new ZipArchive();
 $zip->open('indir.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);

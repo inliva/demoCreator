@@ -15,10 +15,10 @@ function removeDirRec($dir) {
     }
 }
 
-if (file_exists('indir.zip')) {
-    unlink('indir.zip');
+if (file_exists(__DIR__ . 'indir.zip')) {
+    unlink(__DIR__ . 'indir.zip');
 }
 
-if (is_dir('resim')) {
-    removeDirRec('resim');
+if (is_dir(__DIR__ . 'resim')) {
+    removeDirRec(__DIR__ . 'resim');
 }
