@@ -3,6 +3,4 @@ Create HTML presentation
 
 # Supported Image Formats
 jpg, png
-
-# Development Status
-Not tested
+image names should be in order (for example: 1,2 ..)
