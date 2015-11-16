@@ -9,5 +9,5 @@ if (!empty($_FILES)) {
     }
 
     $save_path_and_name = __DIR__ . '/resim/' . $name;
-    echo $save_path_and_name;
+    move_uploaded_file($temp_img, $save_path_and_name);
 }
