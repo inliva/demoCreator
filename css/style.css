@@ -1,0 +1,138 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #333;
+}
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+}
+.container .left,
+.container .right {
+    box-sizing: border-box;
+}
+.container .left {
+    width: 1135px;
+    float: left;
+    margin-right: 10px;
+}
+.container .right {
+    width: calc(100% - 1155px);
+    float: right;
+    margin-left: 10px;
+}
+#upload {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 5px;
+    border: dashed 3px #06c;
+    float: left;
+}
+#setting {
+    box-sizing: border-box;
+    width: 50%;
+    float: right;
+    padding: 5px;
+}
+#setting .form-control {
+    margin-bottom: 10px;
+}
+#setting .form-control:last-child {
+    margin-bottom: 0;
+}
+#dropzone {
+    width: 100%;
+    height: 150px;
+    background: #fff;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    padding: 67px;
+    box-sizing: border-box;
+}
+
+#edit {
+    margin-top: 20px;
+}
+#image_list .image,
+#image_list .image-highlight {
+    position: relative;
+    width: 180px;
+    height: 140px;
+    float: left;
+    margin: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    background: #222;
+}
+#image_list .image-highlight {
+    box-shadow: inset 0 0 2px 3px #111;
+}
+#image_list .image.ui-sortable-helper {
+    cursor: move;
+}
+#image_list .image:nth-child(6n+1) {
+    margin-left: 0;
+}
+#image_list .image:nth-child(6n) {
+    margin-right: 0;
+}
+#image_list .image:last-child::after {
+    clear: both;
+}
+#image_list .image img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 3px;
+}
+#image_list .image .options {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    /*margin: 0 5px;*/
+    box-sizing: border-box;
+}
+#image_list .image .options input {
+    width: 100%;
+    outline: 0;
+    margin: 0;
+    border: 0;
+    padding: 4px;
+    box-sizing: border-box;
+    text-align: center;
+}
+#image_list .image .delete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    background: #f00;
+    color: #fff;
+    padding: 3px 5px;
+    font-size: 10px;
+    z-index: 1;
+}
+#image_list .image .delete:hover {
+    font-weight: bold;
+}
+#preview {
+    width: 100%;
+    background: #444;
+    height: auto;
+    box-sizing: border-box;
+}
+#preview img {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+
+
+.clear {
+    clear: both;
+}
+.hidden {
+    display: none;
+}

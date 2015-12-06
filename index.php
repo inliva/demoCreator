@@ -3,43 +3,43 @@
 <head>
     <meta charset="utf8">
     <title>Demo Tasarım Oluşturucu</title>
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.css">
+    <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<?php require_once('sil.php'); ?>
-<div class="bdr_upload">
-    <h1 class="text-danger center">Demo Oluşturucu</h1>
-    <form action="upload.php" id="dropzone" class="dropzone">
-        <div class="dz-default dz-message"><span>Dosyaları Sürükleyip Bırakın yada Tıklayın</span></div>
-
-    </form>
+<?php require_once('cleaner.php'); ?>
+<div class="container">
+    <div class="left">
+        <div id="upload">
+            <form action="javascript:void(0);" class="" id="dropzone">
+                <span class="caption">Move files or click!</span>
+            </form>
+        </div>
+        <div id="setting">
+            <div class="form-control">
+                <input type="text" name="title" placeholder="Title">
+            </div>
+            <div class="form-control">
+                <button id="indir" class="button">İndir</button>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div id="edit">
+            <ul id="image_list"></ul>
+        </div>
+    </div>
+    <div class="right">
+        <div id="preview"></div>
+    </div>
+    <div class="clear"></div>
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Demo Oluşturma</h4>
-            </div>
-            <div class="modal-body">
-                <p>Dosyalarınız .zip haline cevrilmiştir. Butona tıklayıp indirin.</p>
-            </div>
-            <div class="modal-footer">
-                <a href="index.php" class="btn btn-default">Vazgeç</a>
-                <a href="bitti.php" class="btn btn-success" id="download" target="_blank">Dosyaları İndir</a>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<div class="footer">
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/dropzone.js"></script>
-    <script src="assets/js/demo.js"></script>
-</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
