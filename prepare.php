@@ -43,7 +43,9 @@ $i = 0;
 $dir = opendir('upload');
 
 while ($file_name = readdir($dir)) {
-    rename(__DIR__ . '/upload/' . $file_name, __DIR__ . '/template/img/' . $file_name);
+    if ($file_name != '.' && $file_name != '..') {
+        rename(__DIR__ . '/upload/' . $file_name, __DIR__ . '/template/img/' . $file_name);
+    }
 }
 closedir($dir);
 # END -- Move Images

@@ -80,7 +80,29 @@ jQuery(function($){
         });
 
         $('#image_list .image .delete').click(function () {
-            $(this).parent('.image').remove();
+            var image_node = $(this).parent('.image');
+            imageDelete(image_node, function() {
+                image_node.remove();
+            });
+        });
+    }
+
+    function imageDelete(image_node, callback) {
+        $.ajax({
+            url: 'delete.php',
+            type: 'post',
+            data: {name: image_node.attr('data-src')},
+            success: function(data) {
+
+            },
+            error:  function() {
+                mesajGoster('Hata oluştu!');
+            },
+            complete:  function() {
+                if (typeof callback != typeof undefined) {
+                    callback()
+                }
+            }
         });
     }
 
