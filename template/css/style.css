@@ -1,70 +1,137 @@
 body {
-	font-family: 'Ubuntu', sans-serif;
-	overflow-x: hidden; 
-	background: #333;
+    font-family: 'Ubuntu', sans-serif;
+    overflow-x: hidden;
+    background: #333;
 }
 #image {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	background: no-repeat;
-	background-size: 1920px;
-	background-position: top center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: no-repeat;
+    background-size: 1920px;
+    background-position: top center;
 }
 
 #menu {
-	position: fixed;
-	list-style: none;
-	padding: 20px 0 20px 20px;
+    position: fixed;
+    list-style: none;
     max-height: 100%;
-    opacity: .5;
+    opacity: .3;
 }
-
 #menu:hover {
     opacity: 1;
 }
-
 #menu li {
-	margin: 5px;
+    margin: 5px;
 }
-
+#menu.horizontal li {
+    display: inline-block;
+}
 #menu .button {
     display: table-cell;
-	cursor: pointer;
-	background: #000;
-	color: #fff;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
     box-shadow: 0 0 1px 1px #000;
     width: 40px;
     height: 40px;
     text-align: center;
     vertical-align: middle;
 }
-
 #menu .button.active {
-	cursor: default;
-	background: #333;
+    cursor: default;
+    background: #333;
     box-shadow: 0 0 1px 1px #333;
 }
 
 #preview {
-	position:absolute;
-	border:1px solid #ccc;
-	background:#333;
-	padding:5px;
-	display:none;
-	color:#fff;
+    position:absolute;
+    border:1px solid #ccc;
+    background:#333;
+    padding:5px;
+    display:none;
+    color:#fff;
 }
-
 #preview img {
-	display: block;
-	height: 200px;
-	width: auto;
+    display: block;
+    height: 200px;
+    width: auto;
 }
-
 #preview span {
-	display: block;
-	text-align: center;
+    display: block;
+    text-align: center;
     padding-top: 5px;
     font-weight: bold;
+}
+
+
+/* Special Animate */
+.animated {
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+}
+
+@-webkit-keyframes in {
+    from {
+        -webkit-transform: scale3d(.95, .95, .95);
+        transform: scale3d(.95, .95, .95);
+        opacity: 0;
+    }
+    50% {
+        -webkit-transform: scale3d(1.01, 1.01, 1.01);
+        transform: scale3d(1.01, 1.01, 1.01);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+    }
+}
+@keyframes in {
+    from {
+        -webkit-transform: scale3d(.95, .95, .95);
+        transform: scale3d(.95, .95, .95);
+        opacity: 0;
+    }
+    50% {
+        -webkit-transform: scale3d(1.01, 1.01, 1.01);
+        transform: scale3d(1.01, 1.01, 1.01);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+    }
+}
+.in {
+    -webkit-animation-name: in;
+    animation-name: in;
+}
+
+@-webkit-keyframes out {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    to {
+        -webkit-transform: scale3d(.95, .95, .95);
+        transform: scale3d(.95, .95, .95);
+        opacity: 0;
+    }
+}
+@keyframes out {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    to {
+        -webkit-transform: scale3d(.95, .95, .95);
+        transform: scale3d(.95, .95, .95);
+        opacity: 0;
+    }
+}
+.out {
+    -webkit-animation-name: out;
+    animation-name: out;
 }

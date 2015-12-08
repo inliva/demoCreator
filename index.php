@@ -24,7 +24,40 @@
         </div>
         <div id="setting">
             <div class="form-control">
-                <input type="text" name="title" placeholder="Title">
+                <input type="text" name="title" placeholder="Demo Title">
+            </div>
+            <div class="form-control with-bg">
+                <label for="">Menu Type</label>
+                <span>
+                    <span>Vertical</span>
+                    <input type="radio" name="menu_position_type" value="vertical" checked />
+                </span>
+                <span>
+                    <span>Horizontal</span>
+                    <input type="radio" name="menu_position_type" value="horizontal" />
+                </span>
+            </div>
+            <div class="form-control with-bg">
+                <label for="">Menu Position X</label>
+                <span>
+                    <span>Left</span>
+                    <input type="radio" name="menu_position_x" value="left" checked />
+                </span>
+                <span>
+                    <span>Right</span>
+                    <input type="radio" name="menu_position_x" value="right" />
+                </span>
+            </div>
+            <div class="form-control with-bg">
+                <label for="">Menu Position Y</label>
+                <span>
+                    <span>Top</span>
+                    <input type="radio" name="menu_position_y" value="top" checked />
+                </span>
+                <span>
+                    <span>Bottom</span>
+                    <input type="radio" name="menu_position_y" value="bottom" />
+                </span>
             </div>
             <div class="form-control">
                 <button id="indir" class="button">Download</button>

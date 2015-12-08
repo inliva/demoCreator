@@ -112,10 +112,16 @@ jQuery(function($){
 
     $('#indir').click(function () {
         if ($('#image_list .image').length > 0) {
+            var setting_div = $('#setting');
             var button = $(this);
             button.attr('disabled', 'disabled');
             var form_data = {
-                title: $('#setting input[name="title"]').val(),
+                title: $('input[name="title"]', setting_div).val(),
+                menu_position: {
+                    type: $('input[name="menu_position_type"]:checked', setting_div).val(),
+                    x: $('input[name="menu_position_x"]:checked', setting_div).val(),
+                    y: $('input[name="menu_position_y"]:checked', setting_div).val()
+                },
                 images: []
             };
             $('#image_list .image').each(function(i, ui) {
