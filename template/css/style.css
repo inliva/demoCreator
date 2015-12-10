@@ -65,6 +65,10 @@ body {
     font-weight: bold;
 }
 
+.hidden {
+    display: none;
+}
+
 
 /* Special Animate */
 .animated {

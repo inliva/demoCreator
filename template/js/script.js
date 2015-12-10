@@ -8,6 +8,7 @@ jQuery(function ($) {
     var $window_height = $(window).height();
     var $previewXOffset = 10;
     var $previewYOffset = 30;
+    var $active_image_id = 0;
     var $setting = {};
 
     // Control default setting parameters
@@ -63,8 +64,9 @@ jQuery(function ($) {
                     readHash();
                 } else {
                     $('.button:eq(0)', $menu).trigger('click');
-                    $menu.css('display', 'none');
+                    hideMenu();
                 }
+                detectBrowser();
             });
         });
     }
@@ -136,18 +138,10 @@ jQuery(function ($) {
             // Click
             .click(function () {
                 var $button = $(this);
+                var id = $button.attr('data-id');
 
                 if (!$button.hasClass('active')) {
-                    $('.button', $menu).removeClass('active');
-                    var id = $button.attr('data-id');
-                    var name = $button.attr('data-name');
-                    var src = $button.attr('data-src');
-                    getImageSize(src, function (image_width, image_height) {
-                        var height = parseInt(image_height) / (parseInt(image_width) / parseInt(1920));
-                        changeImage(id, src, height);
-                    });
-                    $button.addClass('active');
-                    window.location.hash = id;
+                    activateImageById(id);
                 }
             });
 
@@ -155,31 +149,46 @@ jQuery(function ($) {
     }
 
     // Set body for selected image
-    function changeImage(id, image_src, height) {
-        if ($image.css('background-image') == 'none') {
-            $image
-                .css({
-                    height: height,
-                    backgroundImage: 'url(' + image_src + ')'
-                })
-                .addClass('animated in')
-        } else {
-            $image
-                .stop(true, true)
-                .removeClass('animated in')
-                .addClass('animated out');
+    function activateImageById(id) {
+        var image_src = $setting.images[id].src;
 
-            setTimeout(function () {
+        getImageSize(image_src, function (image_width, image_height) {
+            var height = parseInt(image_height) / (parseInt(image_width) / parseInt(1920));
+
+            if ($image.css('background-image') == 'none') {
                 $image
-                    .stop(true, true)
                     .css({
                         height: height,
                         backgroundImage: 'url(' + image_src + ')'
                     })
-                    .removeClass('animated out')
                     .addClass('animated in');
-            }, 250);
-        }
+                propagation(id);
+            } else {
+                $image
+                    .stop(true, true)
+                    .removeClass('animated in')
+                    .addClass('animated out');
+
+                setTimeout(function () {
+                    $image
+                        .stop(true, true)
+                        .css({
+                            height: height,
+                            backgroundImage: 'url(' + image_src + ')'
+                        })
+                        .removeClass('animated out')
+                        .addClass('animated in');
+                    propagation(id);
+                }, 250);
+            }
+        });
+    }
+
+    function propagation(id) {
+        $('.button', $menu).removeClass('active');
+        $('.button[data-id="' + id + '"]', $menu).addClass('active');
+        $active_image_id = id;
+        window.location.hash = id;
     }
 
     // Get image real sizes
@@ -209,6 +218,47 @@ jQuery(function ($) {
     // Error message
     function settingErrorMessage() {
         alert('Demo yüklenirken hata oluştu. Lütfen bizimle iletişime geçin..');
+    }
+
+    $("#image").swipe( {
+        swipeStatus:function(event, phase, direction, distance)
+        {
+            if (phase=="end") {
+                if (direction == 'right') {
+                    changeImageByCount(1);
+                } else {
+                    changeImageByCount(-1);
+                }
+            }
+        },
+        triggerOnTouchEnd: false,
+        threshold: 300,
+        fingers: 1
+    });
+
+    function changeImageByCount(value) {
+        var min = 0;
+        var max = parseInt($setting.images.length) - parseInt(1);
+        var id = parseInt($active_image_id) + parseInt(value);
+
+        if (id > max) {
+            id = min;
+        } else if (id < min) {
+            id = max;
+        }
+
+        activateImageById(id);
+    }
+
+    // Detect Mobile
+    function detectBrowser() {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            hideMenu();
+        }
+    }
+
+    function hideMenu() {
+        $menu.addClass('hidden');
     }
 
 });
