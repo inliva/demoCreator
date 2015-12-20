@@ -26,6 +26,15 @@ jQuery(function ($) {
         callback();
     }
 
+    function preloadImages(images_list, callback){
+        var new_images_list = [];
+        for (var i=0; i<images_list.length; i++){
+            new_images_list[i] = new Image();
+            new_images_list[i].src=images_list[i];
+        }
+        callback();
+    }
+
     $.ajax({
         url: 'setting.json',
         type: 'get',
@@ -37,7 +46,13 @@ jQuery(function ($) {
                 settingErrorMessage();
             } else {
                 controlSetting(function () {
-                    render();
+                    var images_list = [];
+                    $.each($setting.images, function (i) {
+                        images_list.push($setting.images[i].src);
+                    });
+                    preloadImages($setting.images, function () {
+                        render();
+                    });
                 })
             }
         },
