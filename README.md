@@ -9,3 +9,6 @@ php ziparchive extension
 
 # Demo
 http://demo-olustur.inliva.com/
+
+# TODO
+Session control simultaneous use

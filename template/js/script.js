@@ -241,7 +241,7 @@ jQuery(function ($) {
             if (phase=="end") {
                 if (direction == 'right') {
                     changeImageByCount(1);
-                } else {
+                } else if (direction == 'left') {
                     changeImageByCount(-1);
                 }
             }

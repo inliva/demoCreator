@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf8">
-    <title>Demo Tasarım Oluşturucu</title>
+    <title>Demo Creator</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.css">
@@ -27,36 +27,36 @@
                 <input type="text" name="title" placeholder="Demo Title">
             </div>
             <div class="form-control with-bg">
-                <label for="">Menu Type</label>
+                <label>Menu Type</label>
                 <span>
-                    <span>Vertical</span>
-                    <input type="radio" name="menu_position_type" value="vertical" checked />
+                    <label for="menu_position_type-vertical" class="control-label">Vertical</label>
+                    <input type="radio" name="menu_position_type" id="menu_position_type-vertical" value="vertical" checked />
                 </span>
                 <span>
-                    <span>Horizontal</span>
-                    <input type="radio" name="menu_position_type" value="horizontal" />
-                </span>
-            </div>
-            <div class="form-control with-bg">
-                <label for="">Menu Position X</label>
-                <span>
-                    <span>Left</span>
-                    <input type="radio" name="menu_position_x" value="left" checked />
-                </span>
-                <span>
-                    <span>Right</span>
-                    <input type="radio" name="menu_position_x" value="right" />
+                    <label for="menu_position_type-horizontal" class="control-label">Horizontal</label>
+                    <input type="radio" name="menu_position_type" id="menu_position_type-horizontal" value="horizontal" />
                 </span>
             </div>
             <div class="form-control with-bg">
-                <label for="">Menu Position Y</label>
+                <label>Menu Position X</label>
                 <span>
-                    <span>Top</span>
-                    <input type="radio" name="menu_position_y" value="top" checked />
+                    <label for="menu_position_x-left" class="control-label">Left</label>
+                    <input type="radio" name="menu_position_x" id="menu_position_x-left" value="left" checked />
                 </span>
                 <span>
-                    <span>Bottom</span>
-                    <input type="radio" name="menu_position_y" value="bottom" />
+                    <label for="menu_position_x-right" class="control-label">Right</label>
+                    <input type="radio" name="menu_position_x" id="menu_position_x-right" value="right" />
+                </span>
+            </div>
+            <div class="form-control with-bg">
+                <label>Menu Position Y</label>
+                <span>
+                    <label for="menu_position_y-top" class="control-label">Top</label>
+                    <input type="radio" name="menu_position_y" id="menu_position_y-top" value="top" checked />
+                </span>
+                <span>
+                    <label for="menu_position_y-bottom" class="control-label">Bottom</label>
+                    <input type="radio" name="menu_position_y" id="menu_position_y-bottom" value="bottom" />
                 </span>
             </div>
             <div class="form-control">

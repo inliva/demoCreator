@@ -55,8 +55,13 @@ body {
 #setting .form-control>span {
     width: 20%;
 }
-#setting .form-control span>span {
+#setting .form-control span label.control-label {
     padding-right: 5px;
+    width: auto;
+    cursor: pointer;
+}
+#setting .form-control span input[type="radio"] {
+    cursor: pointer;
 }
 #dropzone {
     width: 100%;

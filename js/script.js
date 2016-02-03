@@ -150,4 +150,8 @@ jQuery(function($){
             mesajGoster('Önce resim ekleyin.');
         }
     });
+
+    $('#upload .dz-clickable .caption').click(function () {
+        $('#upload .dz-clickable').trigger('click');
+    });
 });
